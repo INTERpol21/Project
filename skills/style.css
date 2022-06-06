@@ -1,0 +1,615 @@
+body {
+    /*Сбросим отпуспы в 0*/
+    margin: 0;
+
+    /*Установка основного шрифта для всего тела*/
+    font-family: 'Glory', sans-serif;
+    /*Установка размера шрифта*/
+    font-size: 18px;
+    /*Установка цвета шрифта*/
+    color: rgba(7, 7, 7, 1);
+
+    /*Сглаживание шрифтов Делать не обязательно*/
+    -webkit-font-smoothing: antialiased;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /*Убераем насткройки отпуспов поумолчанию браузеров*/
+    margin: 0;
+}
+
+p {
+    /*аналогично как и с загаловками*/
+    margin: 0 0 10px 0;
+}
+
+*,
+*:before,
+*:after {
+    /*Установка алгоритма подсчета блоков с учетом pading и границ*/
+    box-sizing: border-box;
+}
+
+/*---------------Базовые настройки закончились------------------*/
+/*Стилизация основного контейнера*/
+.container {
+    /*По ширине всего Контейнера*/
+    width: 100%;
+    /*Максимальная ширина контейнера 1171px + 30px которые заберает padding, подготовка сразу для адаптивной верски*/
+    max-width: 950px;
+    /*Выравниваине по центру auto, слева и справа 0*/
+    margin: 0 auto;
+    /* Увеличиваем для дальнейшей адаптивной верстки */
+    padding: 0 15px;
+
+
+}
+
+/*Header Стилизация шапки */
+.header {
+    /*Написано это после создания класса Intro. Блок нахдился поверх всех блоков, в данном случае для картинки бекграунда. Слой поверх всех слоев*/
+    position: absolute;
+
+    height: 100px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /*Для отображения поверх всех элементов*/
+    z-index: 1000;
+}
+
+/* js!!! */
+.header.fixed {
+    position: fixed;
+    background-color: #cdcdcd;
+    height: auto;
+}
+
+.header.fixed .header__inner {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 0;
+
+}
+
+.header__inner {
+    /*Поумолчанию стоит display:block*/
+    display: flex;
+    /*justify-content это свойство Flex,Отвечает за выравнивание элементов по главной оси:*/
+    /* Выравниваем по центру */
+    justify-content: center;
+    /*Делаем полоску снизу, сплошную, цвет*/
+    border-bottom: 1px solid rgba(130, 130, 130, 1);
+    /*Внутрений отсуп внутри header__inner сверху и снизу 37px*/
+    padding: 32px 0px;
+    /*выравнивание предметов блока по гаризонтальной линии по центру */
+    align-items: center;
+
+}
+
+.nav {
+    display: flex;
+    /*Устанвливаем размер и ширину подключенного шрифта*/
+    font-size: 18px;
+    font-weight: 700;
+    /*Делаем все буквы большие*/
+    text-transform: uppercase;
+}
+
+.nav__link {
+    /*Так как в .nav установлен теперь flex, то можно прописывать отсупы margin*/
+    margin-left: 60px;
+
+    color: rgba(130, 130, 130, 1);
+    /*Убираем линию у ссылок*/
+    text-decoration: none;
+    /*непрозрачность по примеру 75%*/
+    opacity: 0.75;
+    /*transition позволяет делать эффекты каких либо свойств в данном случаем для opacity
+    Liner: Переход происходит равномерно на протяжении всего времени, без колебаний в скорости. */
+    transition: opacity .1s linear;
+}
+
+/*Псевдокласс первого элемента в .nav__link*/
+.nav__link:first-child {
+    /*Так как отсуп для первого элемнета бессмыслен, убераем его */
+    margin-left: 0px;
+}
+
+/*hover то есть при наведении курсора срабатывает этот стиль*/
+.nav__link:hover {
+    /*Линия под ссылками*/
+    text-decoration: underline;
+    /*При наводе делаем 100% непрозрачность*/
+    opacity: 1;
+
+    color: rgba(7, 7, 7, 1);
+}
+
+
+
+/*Intro*/
+.intro {
+    position: relative;
+    /*Устанавливаем значение блока  */
+    height: 680px;
+
+    /*Cover для того что бы картинка занимала весь объем блока */
+    background-size: cover;
+
+    /*Так как шапка идет поверх всего, прописывает отсуп сверху */
+    padding-top: 85px;
+
+    display: flex;
+    /*Каждый новый элимент будет начинатсья с новой строки*/
+    flex-direction: row;
+    /*Выравнивание ячейки по центру блока intro */
+    justify-content: center;
+}
+
+/*Создаем дополнительный контейнер в container для точечной регулировки расстояния*/
+.intro__inner {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+    /*Установка текста для всего блока*/
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.intro__title {
+    /*Отсуп между h1 и h2 к низу*/
+    margin: 40px 0px 30px 0;
+
+    /*Настройки шрифта*/
+    font-family: 'Glory', sans-serif;
+    font-size: 50px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 700;
+    /*настройки текста*/
+
+    /*межстрочный интервал, относительно размеру букв(Можно указывать нарпямую в px)*/
+    /* line-height: 2.6; */
+
+}
+
+.intro__subtitle {
+    font-size: 18px;
+    color: rgba(7, 7, 7, 1);
+
+    font-weight: 400;
+    /*Делаем отступ для кнопки вниз*/
+    /* margin-bottom: 82px; */
+}
+
+.intro__translate {
+    transform: rotate(-90deg);
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile__item {
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    display: flex;
+
+    cursor: pointer;
+
+
+    transition: all 0.3s linear;
+
+}
+
+
+/* Slider */
+
+.slide {
+
+    height: 380px;
+    border-radius: 30px;
+    margin: 5px;
+    flex: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+
+    transition: all 0.6s linear;
+
+}
+
+.slide.active {
+    flex: 10;
+    opacity: 1;
+    transition: opacity 0.4s linear;
+}
+
+/* About */
+
+.about {
+    padding: 120px 0;
+    background: #F6F6F6;
+}
+
+.about__content {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.about__name {
+    font-family: 'Glory', sans-serif;
+    font-size: 34px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 700;
+    padding-bottom: 30px;
+
+}
+
+.about__text {
+    font-family: 'Glory', sans-serif;
+    font-size: 18px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 500;
+    line-height: 1.6;
+
+
+}
+
+/* Icon */
+
+
+.icon__skills {
+    font-family: 'Glory', sans-serif;
+    font-size: 34px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 700;
+    padding-bottom: 60px;
+    padding-top: 90px;
+    text-align: center;
+}
+
+.icon__text {
+    font-family: 'Glory', sans-serif;
+    font-size: 18px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 500;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.icon__inner {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.icon__item {
+    width: 25%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    ;
+
+}
+
+.icon__photo {
+
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    /* align-items:center ; */
+}
+
+
+.icon__name {
+    font-size: 14px;
+    color: rgba(130, 130, 130, 1);
+    margin-bottom: 8px;
+    font-family: 'Glory', sans-serif;
+    font-weight: 700;
+    padding: 14px 0 10px 0;
+
+}
+
+
+
+
+
+
+
+/* Radio STAR */
+.star-rating__wrap {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.star-rating__wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.star-rating__input {
+    float: right;
+    position: relative;
+    width: 0;
+    height: 0;
+    margin: 0 20px 20px 0;
+    cursor: pointer;
+}
+
+.star-rating__input:before {
+    content: "\f006";
+    color: #FFB300;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.star-rating__input:hover:before,
+.star-rating__input:hover~.star-rating__input:before {
+    content: "\f005";
+    color: #FFD779;
+}
+
+.star-rating__input:checked:before,
+.star-rating__input:checked~.star-rating__input:before {
+    content: "\f005";
+    color: #FFB300 !important;
+}
+
+
+
+/* portfolio */
+
+.portfolio__text {
+    padding: 100px 0 45px 0;
+    text-align: center;
+
+
+    font-family: 'Glory', sans-serif;
+    font-size: 34px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 700;
+
+
+}
+
+.portfilio__back {
+    background-color: #F6F6F6;
+}
+
+.portfolio__photo {
+    max-width: 100%;
+    padding: 0 70px;
+    height: auto;
+    background-size: cover;
+
+}
+
+.portfolio__about {
+    padding: 30px 0 60px 0;
+
+    text-decoration: underline;
+    color: rgba(7, 7, 7, 1);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Glory', sans-serif;
+    text-align: center;
+}
+
+/* footer */
+
+.footer {
+    text-align: center;
+}
+
+
+.footer__title {
+    padding-top: 70px;
+
+    font-family: 'Glory', sans-serif;
+    font-size: 34px;
+    color: rgba(7, 7, 7, 1);
+    font-weight: 700;
+}
+
+.footer__text {
+    color: rgba(7, 7, 7, 1);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Glory';
+    padding: 20px 0;
+}
+
+
+.copyright__text {
+    color: rgba(130, 130, 130, 1);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Glory', sans-serif;
+    padding: 20px 0;
+}
+
+
+/* message */
+
+.footer__message {
+    padding: 10px 0 10px 0;
+
+}
+
+
+.ya-share2 {
+    margin: 3px;
+}
+
+.btn {
+    /*для создания pading, отсупов, размеров и прочего как для блока*/
+    display: inline-block;
+    /*Вавнивание по вертикальной границы делаем по верху*/
+    vertical-align: top;
+
+    padding: 10px 30px;
+
+    /*Делаем закругленные границы*/
+    border-radius: 80px;
+    /*Поумолчанию класс button имеет границы, убираем их*/
+    border: 0;
+    /*Создаем курсор при наведении*/
+    cursor: pointer;
+    background-color: #000;
+
+    /*Наследуем у родителя
+    font-family: inherit;*/
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Glory';
+    /*так кнопка ссылка, убираем подчеркивание*/
+
+    text-align: center;
+
+}
+
+.btn:hover {
+    background-color: rgb(42, 13, 232);
+    transition: 0.3s linear;
+}
+
+
+
+
+/* Burger */
+.burger {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 2px;
+}
+
+.burger__item {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+
+    /* В бургер записывает слово Menu для понятности и скрываем его */
+    font-size: 0;
+    color: transparent;
+    /* Что бы полоски расположились относительно .burger */
+    position: relative;
+
+
+}
+
+.burger__item::before,
+.burger__item::after {
+    content: "";
+
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+
+/* полоска выше центральной */
+.burger__item::before {
+    width: 25px;
+    top: -8px;
+}
+
+/* полоска ниже центральной */
+.burger__item::after {
+    width: 18px;
+    bottom: -8px;
+}
+
+
+@media (max-width:600px) {
+
+    /* Nav */
+    .nav {
+        /* скрываем навигацию */
+        display: none;
+
+        /* Стилизация кнопки меню, для JS */
+        width: 100%;
+        flex-direction: column;
+        background-color: #cbcde3;
+        text-align: right;
+
+        position: absolute;
+        top: 100%;
+        right: 0;
+
+    }
+
+    .nav.show {
+        display: flex;
+        align-items: center;
+        background-color: #cdcdcd;
+        padding: 10px;
+
+
+    }
+
+    .nav__link {
+        margin: 0px 0px 3px 0;
+        align-items: center;
+
+    }
+
+    .header {
+        background-color: #cdcdcd;
+    }
+
+    .header__inner {
+        border-bottom: none;
+        justify-content: end;
+    }
+
+    .header.fixed .header__inner {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 0;
+    }
+
+    /* Burger */
+    .burger {
+        display: block;
+    }
+
+    .icon__item {
+        width: 50%;
+
+    }
+
+    .intro__translate {
+        display: none;
+    }
+
+}

@@ -1,0 +1,899 @@
+body {
+    /*Сбросим отпуспы в 0*/
+    margin: 0;
+
+    /*Установка основного шрифта для всего тела*/
+    font-family: 'Raleway', sans-serif;
+    /*Установка размера шрифта*/
+    font-size: 14px;
+    /*Установка цвета шрифта*/
+    color: #6c7279;
+
+    /*Сглаживание шрифтов Делать не обязательно*/
+    -webkit-font-smoothing: antialiased;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /*Убераем насткройки отпуспов поумолчанию браузеров*/
+    margin: 0;
+}
+
+p {
+    /*аналогично как и с загаловками*/
+    margin: 0 0 10px 0;
+}
+
+*,
+*:before,
+*:after {
+    /*Установка алгоритма подсчета блоков с учетом pading и границ*/
+    box-sizing: border-box;
+}
+
+/*---------------Базовые настройки закончились------------------*/
+/*Стилизация основного контейнера*/
+.container {
+    /*По ширине всего Контейнера*/
+    width: 100%;
+    /*Максимальная ширина контейнера 1171px + 30px которые заберает padding, подготовка сразу для адаптивной верски*/
+    max-width: 1200px;
+    /*Выравниваине по центру auto, слева и справа 0*/
+    margin: 0 auto;
+    /* Увеличиваем для дальнейшей адаптивной верстки */
+    padding: 0 15px;
+}
+
+/*Header Стилизация шапки */
+.header {
+    /*Написано это после создания класса Intro. Блок нахдился поверх всех блоков, в данном случае для картинки бекграунда. Слой поверх всех слоев*/
+    position: absolute;
+
+    height: 100px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /*Для отображения поверх всех элементов*/
+    z-index: 1000;
+}
+
+/* js!!! */
+.header.fixed {
+    position: fixed;
+    background-color: #31344e;
+    height: auto;
+}
+
+.header.fixed .header__inner {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 0;
+
+}
+
+.header__inner {
+    /*Поумолчанию стоит display:block*/
+    display: flex;
+    /*justify-content это свойство Flex,Отвечает за выравнивание элементов по главной оси:*/
+    justify-content: space-between;
+    /*Делаем полоску снизу, сплошную, цвет*/
+    border-bottom: 1px solid #505369;
+    /*Внутрений отсуп внутри header__inner сверху и снизу 37px*/
+    padding: 37px 0px;
+    /*выравнивание предметов блока по гаризонтальной линии по центру */
+    align-items: center;
+
+}
+
+
+/*NaV Блок навигации*/
+
+.nav {
+    display: flex;
+    /*Устанвливаем размер и ширину подключенного шрифта*/
+    font-size: 13px;
+    font-weight: 700;
+    /*Делаем все буквы большие*/
+    text-transform: uppercase;
+}
+
+.nav__link {
+    /*Так как в .nav установлен теперь flex, то можно прописывать отсупы margin*/
+    margin-left: 60px;
+    color: #fff;
+    /*Убираем линию у ссылок*/
+    text-decoration: none;
+    /*непрозрачность по примеру 75%*/
+    opacity: 0.75;
+    /*transition позволяет делать эффекты каких либо свойств в данном случаем для opacity
+    Liner: Переход происходит равномерно на протяжении всего времени, без колебаний в скорости. */
+    transition: opacity .1s linear;
+}
+
+/*Псевдокласс первого элемента в .nav__link*/
+.nav__link:first-child {
+    /*Так как отсуп для первого элемнета бессмыслен, убераем его */
+    margin-left: 0px;
+}
+
+/*hover то есть при наведении курсора срабатывает этот стиль*/
+.nav__link:hover {
+    /*Линия под ссылками*/
+    text-decoration: underline;
+    /*При наводе делаем 100% непрозрачность*/
+    opacity: 1;
+}
+
+/*Intro*/
+.intro {
+    /*Устанавливаем значение блока под высоту картинки */
+    height: 750px;
+
+    /*Устанавливаем картинку бека из папки img, также ставим по центру и отключаем повторение no-repeat. */
+
+    background: url("img/bg.jpg") center no-repeat;
+    /*Cover для того что бы картинка занимала весь объем блока */
+    background-size: cover;
+
+    /*Так как шапка идет поверх всего, прописывает отсуп сверху */
+    padding-top: 100px;
+
+    display: flex;
+    /*Каждый новый элимент будет начинатсья с новой строки*/
+    flex-direction: column;
+    /*Выравнивание ячейки по центру блока intro */
+    justify-content: center;
+}
+
+/*Создаем дополнительный контейнер в container для точечной регулировки расстояния*/
+.intro__inner {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+    /*Установка текста для всего блока*/
+    text-align: center;
+}
+
+.intro__title {
+    /*Отсуп между h1 и h2 к низу*/
+    margin: 0 0 30px 0;
+
+    /*Настройки шрифта*/
+    font-family: 'Open Sans', sans-serif;
+    font-size: 65px;
+    color: #fff;
+    font-weight: 700;
+    /*настройки текста*/
+    text-transform: uppercase;
+
+    /*межстрочный интервал, относительно размеру букв(Можно указывать нарпямую в px)*/
+    line-height: 1.1;
+
+}
+
+.intro__subtitle {
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 400;
+    /*Делаем отступ для кнопки вниз*/
+    margin-bottom: 82px;
+}
+
+/*Button */
+
+.btn {
+    /*для создания pading, отсупов, размеров и прочего как для блока*/
+    display: inline-block;
+    /*Вавнивание по вертикальной границы делаем по верху*/
+    vertical-align: top;
+
+    padding: 16px 46px;
+
+    /*Делаем закругленные границы*/
+    border-radius: 5px;
+    /*Поумолчанию класс button имеет границы, убираем их*/
+    border: 0;
+    /*Создаем курсор при наведении*/
+    cursor: pointer;
+
+
+    /*Наследуем у родителя
+    font-family: inherit;*/
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    /*так кнопка ссылка, убираем подчеркивание*/
+    text-decoration: none;
+
+    /*Делаем планый переход фона*/
+    transition: background .1s linear;
+
+    text-align: center;
+
+}
+
+/*Работаем с модификатором кнопки*/
+.btn--red {
+    background-color: red;
+}
+
+/*Работаем с модификатором кнопки при наводе курсора*/
+.btn--red:hover {
+    background-color: rgb(199, 12, 12);
+}
+
+.btn--long {
+    min-width: 280px;
+}
+
+/*Icon*/
+.icon {
+    /*Для удобства расположения*/
+    display: flex;
+    /*отступ сверху и снизу*/
+    margin: 100px 0;
+    /*Разрешаем переносить элементы на новую строку,если они не помещаются */
+    flex-wrap: wrap;
+}
+
+.icon__item {
+    width: 33.33333%;
+    /*Выровним текста по центру*/
+    text-align: center;
+    padding: 0 30px;
+    margin: 25px 0;
+}
+
+.icon__img {
+    margin-bottom: 20px;
+
+}
+
+.icon__title {
+    margin-bottom: 15px;
+
+
+    font-size: 14px;
+    color: #2b3033;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.icon__text {
+    font-size: 14px;
+    color: #6c7279;
+    line-height: 1.5;
+}
+
+/* Works */
+.works {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.works__item {
+    width: 25%;
+    height: 350px;
+    position: relative;
+    /* Скрываем все что выходит за размеры блока(25%) */
+    overflow: hidden;
+
+    /* Делаем бордеры между фото */
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+/* Берем элемент .works__content, который наъодиться .works__item и выполняем этот стиль при наводе hover  */
+.works__item:hover .works__content {
+    opacity: 1;
+}
+
+.works__photo {
+    /* Картинка находясь в блоке works__item теперь будет позиционироваться как абсолют */
+    position: absolute;
+    /* прижимаем и выравниваем строго по центру по осям X Y*/
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    /* Позиционируем сверху  */
+    z-index: 1;
+
+    /* Для адаптивной верстки */
+    min-width: 100%;
+}
+
+.works__content {
+    /* Делаем стиль для надписей */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+    /* Указывается метод цвета rgp, для 4 параметра, прозрачности цвета */
+    background-color: rgb(232, 69, 69, 0.9);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Z-index больше блока photo!!! */
+    z-index: 2;
+    /* Скрывам блок контента поумолчанию. */
+    opacity: 0;
+    /* Делаем плавный контент */
+    transition: opacity 0.2s linear;
+}
+
+.works__title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.works__text {
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Team */
+.team {
+    /* Сверху 100, снизу 70, лево.право 0 */
+    margin: 100px 0 70px;
+}
+
+.team__inner {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.team__item {
+    width: 25%;
+    padding: 0 15px;
+    /* Если участников будет больше 4, адаптация для моб. верстки */
+    margin-bottom: 30px;
+}
+
+.team__photo {
+    display: block;
+    /* Максимальная ширина в блоке team__item */
+    max-width: 100%;
+    /* При изменении широты, высота автоматически будет уменьшаться  */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.team__name {
+    font-size: 22px;
+    color: black;
+
+    margin-bottom: 8px;
+}
+
+.team__prof {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #e84545;
+    margin-bottom: 15px;
+}
+
+.team__text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #6c7279;
+    /*отделяем текст от иконки снизу*/
+    margin-bottom: 20px;
+}
+
+/* Social */
+.social {
+    display: flex;
+}
+
+/* модификатор для футера. с контентом по центру  */
+.social--footer {
+    justify-content: center;
+}
+
+.social__item {
+    /* верстаем по макету */
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #e8ecee;
+    /* выравнивание по центру */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* отделяем друг от друга иконки */
+    margin-right: 4px;
+
+    background-color: #fff;
+    border: 1px solid #e8ecee;
+    transition: background .1s linear;
+}
+
+.social__item:hover {
+    background-color: #e8ecee;
+}
+
+/* Селектор. Работаем с иконкой при наводе на .social__item */
+.social__item:hover .social__icon {
+    fill: #000;
+}
+
+.social--footer .social__item {
+    /* меняем цвет бека кнопок в футоре на прозрачный */
+    background-color: transparent;
+    /* меняем только толшину бордера */
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 4px;
+}
+
+.social--footer .social__item:hover {
+    /* При наводе на кнопки social в футоре меням цвет */
+    background-color: #fff;
+}
+
+.social__icon {
+    /* Метод заливки при помощи свойства fill.Смотреть внимательно в <SVG> что бы не было кода цвета */
+    fill: #c6cacc;
+
+    display: block;
+    height: 18px;
+
+    transition: fill .1s linear;
+}
+
+.social--footer .social__icon {
+    /* меняем цвет заливки */
+    fill: #fff;
+}
+
+/* Reciews */
+
+.reviews {
+    background-color: #53354a;
+    /*Если картинки будут большими, что бы они не вылазили поверх блока  */
+    overflow: hidden;
+}
+
+/* Класс для JS. Слайдер класс */
+.review__slider {
+    /* Теперь слайдер не будет прыгать при загрузки страницы */
+    height: 500px;
+    overflow: hidden;
+}
+
+/* Настройка высоты для моб. устройств */
+.review__slider.slick-initialized {
+    height: auto;
+}
+
+.reviews__item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reviews__photo {
+    width: 50%;
+    height: 500px;
+    /* для позиционирования относительного блока */
+    position: relative;
+}
+
+.reviews__img {
+    position: absolute;
+    /* Прижимаем к левому краю поверх бека и идеально по центру с помошью translateY*/
+    top: 50%;
+    right: 0;
+    z-index: 1;
+
+    transform: translateY(-50%);
+}
+
+.reviews__content {
+    width: 50%;
+    padding-left: 80px;
+    /* Делаем каждый элемент блока то есть text и author был с новой строки  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reviews__text {
+    font-family: 'Cardo' sans-serif;
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.reviews__author {
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #fff;
+}
+
+/* Стилизация точек в слайдере */
+
+.slick-dots {
+    /* Ставим их по центру блока */
+    display: flex;
+    justify-content: center;
+
+    /* формируем кружочки */
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 10px;
+
+
+}
+
+/* Стилизация элементов li, то есть самих кнопок */
+.slick-dots li {
+    margin: 5px 0;
+}
+
+/* Стилизация кнопки на точках в слайдере */
+.slick-dots button {
+    /* создаем новую кнопку */
+    background: #fff;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+
+    /* отключаем старую кнопку */
+    border: 0;
+    padding: 0;
+    font-size: 0;
+    color: transparent;
+
+    cursor: pointer;
+}
+
+/* При фокусе на кнопке  */
+.slick-dots button:focus {
+    outline: 0;
+}
+
+.slick-dots .slick-active button {
+    opacity: 1;
+}
+
+
+/* Download */
+
+.download {
+
+    text-align: center;
+    margin: 100px 0;
+}
+
+.download__title {
+    font-size: 28px;
+    font-family: 'Raleway' sans-serif;
+    color: #2d3033;
+    font-weight: 300;
+}
+
+.download__subtitle {
+    font-size: 13px;
+    margin: 10px 0 30px 0;
+    font-weight: 700;
+    color: #2d3033;
+    text-transform: uppercase;
+}
+
+/* Footer */
+.footer {
+
+
+    background-color: #3a3e64;
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 70px 0;
+
+}
+
+.footer__block {
+    /* Делим блок на 3 ровные части */
+    width: 33.33333%;
+    /* Деламе все объекты по центру */
+    text-align: center;
+
+
+
+}
+
+.footer__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.footer__address {
+    /* Так как тег адресс по умолчанию italic меняем на нормал */
+    font-style: normal;
+    color: rgba(250, 250, 250, 0.5);
+    font-size: 14px;
+    line-height: 1.5;
+
+
+}
+
+.footer__text {
+
+    color: rgba(250, 250, 250, 0.5);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Copyright */
+.copyright {
+    background-color: #313454;
+    padding: 20px 0;
+}
+
+.copyright__text {
+    text-align: center;
+    font-size: 14px;
+    color: #808080;
+    line-height: 1.5;
+}
+
+.copyright__text span {
+    color: #fff;
+}
+
+
+/* Burger */
+.burger {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 2px;
+}
+
+.burger__item {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+
+    /* В бургер записывает слово Menu для понятности и скрываем его */
+    font-size: 0;
+    color: transparent;
+    /* Что бы полоски расположились относительно .burger */
+    position: relative;
+
+
+}
+
+.burger__item::before,
+.burger__item::after {
+    content: "";
+
+    height: 100%;
+    background-color: #fff;
+
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+
+/* полоска выше центральной */
+.burger__item::before {
+    width: 25px;
+    top: -8px;
+}
+
+/* полоска ниже центральной */
+.burger__item::after {
+    width: 18px;
+    bottom: -8px;
+}
+
+
+/* Медиа, адаптивная верстка---------------------------------------------------------------------------------------------*/
+
+@media (max-width:1300px) {
+
+    /* Works */
+    .works__item {
+        width: 50%;
+    }
+}
+
+@media (max-width:991px) {
+
+    /* Nav */
+    .nav {
+        /* скрываем навигацию */
+        display: none;
+
+        /* Стилизация кнопки меню, для JS */
+        width: 100%;
+        flex-direction: column;
+        background-color: #31344e;
+        text-align: right;
+
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+
+    .nav__link {
+        padding: 9px 15px;
+    }
+
+    .nav.show {
+        display: flex;
+    }
+
+    /* Burger */
+    .burger {
+        display: block;
+    }
+
+    /* Intro */
+    .intro__title {
+        font-size: 40px;
+    }
+
+    /* Icon */
+    .icon__item {
+        /* Делаем по 2 элимента на страницу */
+        width: 50%;
+    }
+
+    /* Team */
+    .team__item {
+        width: 50%;
+        text-align: center;
+    }
+
+    .team__photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Social */
+    .social {
+        justify-content: center;
+    }
+
+    /* Slider */
+    .reviews__photo {
+        width: 100%;
+        /* Так как фото не подходит по формату, обрезаем и двигаем его по центру, на глаз */
+        overflow: hidden;
+        margin: 15px 0 40px;
+    }
+
+    .reviews__content {
+        width: 100%;
+        padding-left: 0;
+        padding-bottom: 40px;
+    }
+
+
+}
+
+@media (max-width:767px) {
+
+    /* Intro */
+    .intro {
+        height: auto;
+        padding-top: 130px;
+        padding-bottom: 30px;
+
+    }
+
+    .intro__title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .intro__subtitle {
+        font-size: 16px;
+    }
+
+    /* Icon */
+    .icon {
+        margin: 40px 0;
+    }
+
+    .icon__item {
+        /* Делаем по 1 элимента на страницу */
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Works */
+    .works__item {
+        width: 100%;
+        height: 300px;
+    }
+
+    /* Team */
+    .team {
+        margin: 60px 0 30px 0;
+    }
+
+    .team__item {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Reviews */
+    .reviews__text {
+        font-size: 25px;
+    }
+
+    /* Btn */
+    .btn--long {
+        min-width: 260px;
+    }
+
+    /* Download */
+    .download {
+        margin: 50px 0;
+    }
+
+    .download__title {
+        font-size: 24px;
+    }
+
+    /* footer */
+
+    .footer__block {
+        width: 100%;
+        margin-bottom: 30px;
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+
+    .footer__block:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer__inner {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width:767px) {
+    .reviews__img {
+        right: -100px;
+    }
+}
